@@ -17,9 +17,9 @@ export default function App() {
   ]);
 
   const COLUMNS = [
-    { id: "todo", title: "To Do" },
-    { id: "in_progress", title: "In Progress" },
-    { id: "done", title: "Done" },
+    { id: "TODO", title: "To Do" },
+    { id: "IN_PROGRESS", title: "In Progress" },
+    { id: "DONE", title: "Done" },
   ];
 
   const [isDropped, setIsDropped] = useState<boolean>(false);
