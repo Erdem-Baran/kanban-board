@@ -13,7 +13,7 @@ export function Droppable(props: any) {
     <div
       ref={setNodeRef}
       style={style}
-      className="p-4 rounded-lg min-h-[50px] w-full border-2 border-dashed border-gray-300"
+      className="p-4 rounded-lg min-h-12.5 w-full border-2 border-dashed border-gray-300"
     >
       {props.children}
     </div>
