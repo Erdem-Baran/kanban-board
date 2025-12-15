@@ -1,68 +1,67 @@
 # 📋 Modern Kanban Board
 
-React, TypeScript ve Tailwind CSS v4 kullanılarak geliştirilmiş, sürükle-bırak (Drag & Drop) özellikli, tema destekli modern bir Kanban Panosu uygulaması.
+A modern Kanban Board application developed using React, TypeScript, and Tailwind CSS v4, featuring Drag & Drop functionality and theme support.
 
+## ✨ Features
 
-## ✨ Özellikler
+- **Drag & Drop:** Smoothly move tasks between columns with the `@dnd-kit` infrastructure.
+- **Dark & Light Mode:** Theme support powered by Tailwind CSS v4 that remembers user preference (localStorage).
+- **Task Management:** Easily add new tasks and manage their statuses.
+- **Feature-Based Architecture:** A scalable, modular, and easy-to-maintain file structure.
+- **Responsive Design:** A modern interface compatible with both mobile and desktop.
 
--   **Sürükle & Bırak (Drag & Drop):** `@dnd-kit` altyapısı ile görevleri sütunlar arasında pürüzsüzce taşıyın.
--   **Karanlık & Aydınlık Mod:** Kullanıcı tercihini hatırlayan (localStorage) ve Tailwind CSS v4 ile güçlendirilmiş tema desteği.
--   **Görev Yönetimi:** Kolayca yeni görevler ekleyin ve durumlarını yönetin.
--   **Feature-Based Mimari:** Ölçeklenebilir, modüler ve bakımı kolay dosya yapısı.
--   **Responsive Tasarım:** Mobil ve masaüstü uyumlu modern arayüz.
+## 🛠️ Technologies
 
-## 🛠️ Teknolojiler
+This project was built using the following technologies:
 
-Bu proje aşağıdaki teknolojilerle oluşturulmuştur:
+- **[React 19](https://react.dev/)** - UI Library
+- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
+- **[Vite](https://vitejs.dev/)** - Fast development environment and build tool
+- **[Tailwind CSS v4](https://tailwindcss.com/)** - Styling
+- **[@dnd-kit/core](https://dndkit.com/)** - Drag and drop logic
+- **[React Icons](https://react-icons.github.io/react-icons/)** - Icon set
 
--   **[React 19](https://react.dev/)** - UI Kütüphanesi
--   **[TypeScript](https://www.typescriptlang.org/)** - Tip güvenliği
--   **[Vite](https://vitejs.dev/)** - Hızlı geliştirme ortamı ve build aracı
--   **[Tailwind CSS v4](https://tailwindcss.com/)** - Stil işlemleri
--   **[@dnd-kit/core](https://dndkit.com/)** - Sürükle ve bırak mantığı
--   **[React Icons](https://react-icons.github.io/react-icons/)** - İkon seti
+## 🚀 Installation and Usage
 
-## 🚀 Kurulum ve Çalıştırma
+Follow these steps to run the project in your local environment:
 
-Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyin:
-
-1.  **Projeyi klonlayın:**
+1. **Clone the project:**
     ```bash
     git clone (https://github.com/Erdem-Baran/kanban-board.git)
     cd kanban-board
     ```
 
-2.  **Bağımlılıkları yükleyin:**
+2. **Install dependencies:**
     ```bash
     npm install
-    # veya
+    # or
     yarn install
     ```
 
-3.  **Geliştirme sunucusunu başlatın:**
+3. **Start the development server:**
     ```bash
     npm run dev
-    # veya
+    # or
     yarn dev
     ```
 
-4.  Tarayıcınızda `http://localhost:5173` adresine gidin.
+4. Go to `http://localhost:5173` in your browser.
 
-## 📂 Proje Yapısı
+## 📂 Project Structure
 
-Proje, sürdürülebilirlik ve ölçeklenebilirlik için **Feature-Based (Özellik Tabanlı)** klasör yapısını kullanır:
+The project uses a **Feature-Based** folder structure for sustainability and scalability:
 
 ```text
 src/
-├── assets/                  # Statik dosyalar (Resimler vb.)
-├── components/              # Uygulama geneli bileşenler
-│   ├── common/              # Draggable, Droppable gibi genel UI parçaları
-│   └── layout/              # MainLayout gibi düzen bileşenleri
-├── features/                # İş mantığı (Domain Logic)
-│   └── kanban/              # Kanban özelliğine ait her şey
+├── assets/                  # Static files (Images, etc.)
+├── components/              # Application-wide components
+│   ├── common/              # General UI parts like Draggable, Droppable
+│   └── layout/              # Layout components like MainLayout
+├── features/                # Business logic (Domain Logic)
+│   └── kanban/              # Everything related to the Kanban feature
 │       ├── components/      # TaskCard, KanbanColumn, Form...
-│       ├── hooks/           # useKanban (State ve mantık)
-│       └── types/           # Kanban'a özel tipler (Task interface)
-├── hooks/                   # Global hook'lar (useTheme)
-├── App.tsx                  # Ana uygulama bileşeni
-└── main.tsx                 # Giriş noktası
+│       ├── hooks/           # useKanban (State and logic)
+│       └── types/           # Kanban-specific types (Task interface)
+├── hooks/                   # Global hooks (useTheme)
+├── App.tsx                  # Main application component
+└── main.tsx                 # Entry point
