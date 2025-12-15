@@ -7,9 +7,9 @@ import ThemeToggle from "./components/ThemeToggle";
 
 export default function App() {
   const [tasks, setTasks] = useState<Task[]>([
-    { id: "1", title: "projeyi oluştur", status: "TODO" },
-    { id: "2", title: "bileşenleri ekle", status: "IN_PROGRESS" },
-    { id: "3", title: "stil ekle", status: "DONE" },
+    { id: "1", title: "create the project", status: "TODO" },
+    { id: "2", title: "add components", status: "IN_PROGRESS" },
+    { id: "3", title: "add styles", status: "DONE" },
   ]);
 
   const [newTaskTitle, setNewTaskTitle] = useState("");
@@ -37,32 +37,31 @@ export default function App() {
 
   return (
     <div className="p-10 min-h-screen bg-gray-100 dark:bg-gray-950 transition-colors duration-300">
-      <div className="grid grid-cols-3 items-center mb-8">
+      <div className="grid grid-cols-1 items-center mb-8">
+        <h1 className="text-3xl text-center text-gray-800 dark:text-white font-semibold">
+          Kanban Board
+        </h1>
+        <div className="flex justify-end">
+          <ThemeToggle />
+        </div>
+
         <div>
-          <form onSubmit={handleFormSubmit} className="flex gap-2">
+          <form onSubmit={handleFormSubmit} className="flex gap-3 items-center justify-center mt-4 mb-4 font-semibold">
             <input
               type="text"
               name="task"
               value={newTaskTitle}
               onChange={(e) => setNewTaskTitle(e.target.value)}
               placeholder="Add new task..."
-              className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full bg-white dark:bg-gray-800 dark:text-white dark:border-gray-700"
+              className="p-2 rounded border max-w-2xs border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full bg-white dark:bg-gray-800 dark:text-white dark:border-gray-700"
             />
             <button
               type="submit"
-              className="mt-0 bg-blue-500 text-white p-2 rounded hover:bg-blue-600 w-full"
+              className="mt-0 bg-blue-500 text-white p-2 rounded max-w-2xs  hover:bg-blue-600 w-full"
             >
               submit
             </button>
           </form>
-        </div>
-
-        <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white">
-          Kanban Board
-        </h1>
-
-        <div className="flex justify-end">
-          <ThemeToggle />
         </div>
       </div>
 
@@ -87,7 +86,7 @@ export default function App() {
                     ))}
                   {tasks.filter((t) => t.status === col.id).length === 0 && (
                     <div className="text-gray-400 text-sm text-center py-4">
-                      Boş
+                      No tasks here
                     </div>
                   )}
                 </div>
