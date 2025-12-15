@@ -4,7 +4,7 @@ import { Droppable } from "./components/Droppable";
 import { Draggable } from "./components/Draggable";
 import type { Task } from "./types/Types";
 import { CiLight } from "react-icons/ci";
-// import { title } from "process";
+import ThemeToggle from "./components/ThemeToggle";
 
 export default function App() {
   const [tasks, setTasks] = useState<Task[]>([
@@ -63,9 +63,7 @@ export default function App() {
         </h1>
 
         <div className="flex justify-end">
-          <div className="text-5xl cursor-pointer text-gray-600 hover:text-gray-900 transition-colors">
-            <CiLight />
-          </div>
+          <ThemeToggle />
         </div>
       </div>
 
