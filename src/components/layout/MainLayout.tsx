@@ -9,7 +9,7 @@ interface MainLayoutProps {
 export default function MainLayout({ children }: MainLayoutProps) {
   return (
     // 1. Main container
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 transition-colors duration-300 font-sans">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 transition-colors duration-900 font-sans">
       
       {/* 2. Content limiter */}
       <div className="max-w-5xl mx-auto p-10">
