@@ -1,6 +1,6 @@
 // src/features/kanban/hooks/useKanban.ts
 import { useState } from "react";
-import { DragEndEvent } from "@dnd-kit/core";
+import type { DragEndEvent } from "@dnd-kit/core";
 import type { Task } from "../types/Types";
 
 export const useKanban = () => {
@@ -25,7 +25,7 @@ export const useKanban = () => {
       setTasks((prevTasks) => {
         return prevTasks.map((task) => {
           if (task.id === active.id) {
-            return { ...task, status: over.id };
+            return { ...task, status: over.id as Task["status"] };
           }
           return task;
         });
