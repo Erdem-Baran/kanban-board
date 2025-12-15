@@ -5,15 +5,14 @@ export function Droppable(props: any) {
   const { isOver, setNodeRef } = useDroppable({
     id: props.id,
   });
-  const style = {
-    backgroundColor: isOver ? "#dcfce7" : "#f3f4f6",
-  };
+  const bgClass = isOver 
+    ? "bg-green-100 dark:bg-green-900/30"
+    : "bg-gray-50 dark:bg-gray-800/50";
 
   return (
     <div
       ref={setNodeRef}
-      style={style}
-      className="p-4 rounded-lg min-h-12.5 w-full border-2 border-dashed border-gray-300"
+      className="p-4 rounded-lg min-h-[100px] w-full border-2 border-dashed transition-colors ${bgClass} border-gray-300 dark:border-gray-700"
     >
       {props.children}
     </div>

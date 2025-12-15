@@ -37,7 +37,7 @@ export default function App() {
   };
 
   return (
-    <div className="p-10 min-h-screen bg-gray-100">
+    <div className="p-10 min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
       <div className="grid grid-cols-3 items-center mb-8">
         <div>
           <form onSubmit={handleFormSubmit} className="flex gap-2">
@@ -47,7 +47,7 @@ export default function App() {
               value={newTaskTitle}
               onChange={(e) => setNewTaskTitle(e.target.value)}
               placeholder="Add new task..."
-              className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
+              className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full bg-white dark:bg-gray-800 dark:text-white dark:border-gray-700"
             />
             <button
               type="submit"
@@ -58,7 +58,7 @@ export default function App() {
           </form>
         </div>
 
-        <h1 className="text-3xl font-bold text-center text-gray-800">
+        <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white">
           Kanban Board
         </h1>
 
@@ -71,7 +71,7 @@ export default function App() {
         <div className="flex gap-4 max-w-5xl mx-auto">
           {COLUMNS.map((col) => (
             <div key={col.id} className="flex-1">
-              <h2 className="text-xl font-semibold mb-4 text-center">
+              <h2 className="text-xl font-semibold mb-4 text-center text-gray-700 dark:text-gray-200">
                 {col.title}
               </h2>
 
@@ -81,7 +81,7 @@ export default function App() {
                     .filter((task) => task.status === col.id)
                     .map((task) => (
                       <Draggable key={task.id} id={task.id}>
-                        <div className="bg-white p-4 rounded shadow-sm hover:shadow-md border border-gray-200 cursor-grab">
+                        <div className="bg-white p-4 rounded shadow-sm hover:shadow-md border border-gray-200 cursor-grab dark:bg-gray-700 dark:text-white dark:border-gray-600">
                           {task.title}
                         </div>
                       </Draggable>
