@@ -1,9 +1,8 @@
-// src/App.tsx
 import { DndContext } from "@dnd-kit/core";
 import { useKanban } from "./features/kanban/hooks/useKanban";
 import { KanbanColumn } from "./features/kanban/components/KanbanColumn";
 import { CreateTaskForm } from "./features/kanban/components/CreateTaskForm";
-import ThemeToggle from "./components/ThemeToggle";
+import MainLayout from "./components/layout/MainLayout";
 
 export default function App() {
   const { tasks, addTask, moveTask } = useKanban();
@@ -15,22 +14,14 @@ export default function App() {
   ];
 
   return (
-    <div className="p-10 min-h-screen bg-gray-100 dark:bg-gray-950 transition-colors duration-300">
-      {/* Header*/}
-      <div className="grid grid-cols-1 items-center mb-8">
-        <h1 className="text-3xl text-center text-gray-800 dark:text-white font-semibold">
-          Kanban Board
-        </h1>
-        <div className="flex justify-end">
-          <ThemeToggle />
-        </div>
-        
+    <MainLayout>
+      
+      <div className="mb-8 flex justify-center">
         <CreateTaskForm onSubmit={addTask} />
       </div>
 
-      {/* Kanban Board*/}
       <DndContext onDragEnd={moveTask}>
-        <div className="flex gap-4 max-w-5xl mx-auto">
+        <div className="flex gap-4 flex-col md:flex-row">
           {COLUMNS.map((col) => (
             <KanbanColumn
               key={col.id}
@@ -41,6 +32,7 @@ export default function App() {
           ))}
         </div>
       </DndContext>
-    </div>
+      
+    </MainLayout>
   );
 }
