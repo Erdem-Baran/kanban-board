@@ -3,7 +3,6 @@ import { DndContext } from "@dnd-kit/core";
 import { Droppable } from "./components/Droppable";
 import { Draggable } from "./components/Draggable";
 import type { Task } from "./types/Types";
-import { CiLight } from "react-icons/ci";
 import ThemeToggle from "./components/ThemeToggle";
 
 export default function App() {
@@ -37,7 +36,7 @@ export default function App() {
   };
 
   return (
-    <div className="p-10 min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <div className="p-10 min-h-screen bg-gray-100 dark:bg-gray-950 transition-colors duration-300">
       <div className="grid grid-cols-3 items-center mb-8">
         <div>
           <form onSubmit={handleFormSubmit} className="flex gap-2">

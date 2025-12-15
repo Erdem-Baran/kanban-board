@@ -12,7 +12,7 @@ export function Droppable(props: any) {
   return (
     <div
       ref={setNodeRef}
-      className="p-4 rounded-lg min-h-[100px] w-full border-2 border-dashed transition-colors ${bgClass} border-gray-300 dark:border-gray-700"
+      className={`p-4 rounded-lg min-h-[100  w-full border-2 border也border-dashed transition-colors ${bgClass} border-gray-3ly-200 dark:border-gray-700`}
     >
       {props.children}
     </div>
