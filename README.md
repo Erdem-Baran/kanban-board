@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# 📋 Modern Kanban Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React, TypeScript ve Tailwind CSS v4 kullanılarak geliştirilmiş, sürükle-bırak (Drag & Drop) özellikli, tema destekli modern bir Kanban Panosu uygulaması.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Özellikler
 
-## React Compiler
+-   **Sürükle & Bırak (Drag & Drop):** `@dnd-kit` altyapısı ile görevleri sütunlar arasında pürüzsüzce taşıyın.
+-   **Karanlık & Aydınlık Mod:** Kullanıcı tercihini hatırlayan (localStorage) ve Tailwind CSS v4 ile güçlendirilmiş tema desteği.
+-   **Görev Yönetimi:** Kolayca yeni görevler ekleyin ve durumlarını yönetin.
+-   **Feature-Based Mimari:** Ölçeklenebilir, modüler ve bakımı kolay dosya yapısı.
+-   **Responsive Tasarım:** Mobil ve masaüstü uyumlu modern arayüz.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Teknolojiler
 
-## Expanding the ESLint configuration
+Bu proje aşağıdaki teknolojilerle oluşturulmuştur:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-   **[React 19](https://react.dev/)** - UI Kütüphanesi
+-   **[TypeScript](https://www.typescriptlang.org/)** - Tip güvenliği
+-   **[Vite](https://vitejs.dev/)** - Hızlı geliştirme ortamı ve build aracı
+-   **[Tailwind CSS v4](https://tailwindcss.com/)** - Stil işlemleri
+-   **[@dnd-kit/core](https://dndkit.com/)** - Sürükle ve bırak mantığı
+-   **[React Icons](https://react-icons.github.io/react-icons/)** - İkon seti
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Kurulum ve Çalıştırma
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyin:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  **Projeyi klonlayın:**
+    ```bash
+    git clone (https://github.com/Erdem-Baran/kanban-board.git)
+    cd kanban-board
+    ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2.  **Bağımlılıkları yükleyin:**
+    ```bash
+    npm install
+    # veya
+    yarn install
+    ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3.  **Geliştirme sunucusunu başlatın:**
+    ```bash
+    npm run dev
+    # veya
+    yarn dev
+    ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+4.  Tarayıcınızda `http://localhost:5173` adresine gidin.
+
+## 📂 Proje Yapısı
+
+Proje, sürdürülebilirlik ve ölçeklenebilirlik için **Feature-Based (Özellik Tabanlı)** klasör yapısını kullanır:
+
+```text
+src/
+├── assets/                  # Statik dosyalar (Resimler vb.)
+├── components/              # Uygulama geneli bileşenler
+│   ├── common/              # Draggable, Droppable gibi genel UI parçaları
+│   └── layout/              # MainLayout gibi düzen bileşenleri
+├── features/                # İş mantığı (Domain Logic)
+│   └── kanban/              # Kanban özelliğine ait her şey
+│       ├── components/      # TaskCard, KanbanColumn, Form...
+│       ├── hooks/           # useKanban (State ve mantık)
+│       └── types/           # Kanban'a özel tipler (Task interface)
+├── hooks/                   # Global hook'lar (useTheme)
+├── App.tsx                  # Ana uygulama bileşeni
+└── main.tsx                 # Giriş noktası
