@@ -1,18 +1,12 @@
-import React, { useState } from "react";
+// src/App.tsx
 import { DndContext } from "@dnd-kit/core";
-import { Droppable } from "./components/Droppable";
-import { Draggable } from "./components/Draggable";
-import type { Task } from "./types/Types";
-import ThemeToggle from "./components/ThemeToggle";
+import { useKanban } from "./features/kanban/hooks/useKanban";
+import { KanbanColumn } from "./features/kanban/components/KanbanColumn";
+import { CreateTaskForm } from "./features/kanban/components/CreateTaskForm";
+import ThemeToggle from "./components/ThemeToggle"; // Bunu layout altına da alabilirsin sonra
 
 export default function App() {
-  const [tasks, setTasks] = useState<Task[]>([
-    { id: "1", title: "create the project", status: "TODO" },
-    { id: "2", title: "add components", status: "IN_PROGRESS" },
-    { id: "3", title: "add styles", status: "DONE" },
-  ]);
-
-  const [newTaskTitle, setNewTaskTitle] = useState("");
+  const { tasks, addTask, moveTask } = useKanban();
 
   const COLUMNS = [
     { id: "TODO", title: "To Do" },
@@ -20,23 +14,9 @@ export default function App() {
     { id: "DONE", title: "Done" },
   ];
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!newTaskTitle.trim()) return;
-
-    const newTask: Task = {
-      id: Date.now().toString(),
-      title: newTaskTitle,
-      status: "TODO",
-    };
-
-    setTasks((prevTasks) => [...prevTasks, newTask]);
-    setNewTaskTitle("");
-  };
-
   return (
     <div className="p-10 min-h-screen bg-gray-100 dark:bg-gray-950 transition-colors duration-300">
+      {/* Header Kısmı */}
       <div className="grid grid-cols-1 items-center mb-8">
         <h1 className="text-3xl text-center text-gray-800 dark:text-white font-semibold">
           Kanban Board
@@ -44,71 +24,23 @@ export default function App() {
         <div className="flex justify-end">
           <ThemeToggle />
         </div>
-
-        <div>
-          <form onSubmit={handleFormSubmit} className="flex gap-3 items-center justify-center mt-4 mb-4 font-semibold">
-            <input
-              type="text"
-              name="task"
-              value={newTaskTitle}
-              onChange={(e) => setNewTaskTitle(e.target.value)}
-              placeholder="Add new task..."
-              className="p-2 rounded border max-w-2xs border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full bg-white dark:bg-gray-800 dark:text-white dark:border-gray-700"
-            />
-            <button
-              type="submit"
-              className="mt-0 bg-blue-500 text-white p-2 rounded max-w-2xs  hover:bg-blue-600 w-full"
-            >
-              submit
-            </button>
-          </form>
-        </div>
+        
+        <CreateTaskForm onSubmit={addTask} />
       </div>
 
-      <DndContext onDragEnd={handleDragEnd}>
+      {/* Kanban Board Kısmı */}
+      <DndContext onDragEnd={moveTask}>
         <div className="flex gap-4 max-w-5xl mx-auto">
           {COLUMNS.map((col) => (
-            <div key={col.id} className="flex-1">
-              <h2 className="text-xl font-semibold mb-4 text-center text-gray-700 dark:text-gray-200">
-                {col.title}
-              </h2>
-
-              <Droppable id={col.id}>
-                <div className="flex flex-col gap-3">
-                  {tasks
-                    .filter((task) => task.status === col.id)
-                    .map((task) => (
-                      <Draggable key={task.id} id={task.id}>
-                        <div className="bg-white p-4 rounded shadow-sm hover:shadow-md border border-gray-200 cursor-grab dark:bg-gray-700 dark:text-white dark:border-gray-600">
-                          {task.title}
-                        </div>
-                      </Draggable>
-                    ))}
-                  {tasks.filter((t) => t.status === col.id).length === 0 && (
-                    <div className="text-gray-400 text-sm text-center py-4">
-                      No tasks here
-                    </div>
-                  )}
-                </div>
-              </Droppable>
-            </div>
+            <KanbanColumn
+              key={col.id}
+              id={col.id}
+              title={col.title}
+              tasks={tasks.filter((t) => t.status === col.id)}
+            />
           ))}
         </div>
       </DndContext>
     </div>
   );
-
-  function handleDragEnd(event: any) {
-    const { active, over } = event;
-    if (over && active.id !== over.id) {
-      setTasks((prevTasks) => {
-        return prevTasks.map((task) => {
-          if (task.id === active.id) {
-            return { ...task, status: over.id };
-          }
-          return task;
-        });
-      });
-    }
-  }
 }
