@@ -3,7 +3,7 @@ import { DndContext } from "@dnd-kit/core";
 import { useKanban } from "./features/kanban/hooks/useKanban";
 import { KanbanColumn } from "./features/kanban/components/KanbanColumn";
 import { CreateTaskForm } from "./features/kanban/components/CreateTaskForm";
-import ThemeToggle from "./components/ThemeToggle"; // Bunu layout altına da alabilirsin sonra
+import ThemeToggle from "./components/ThemeToggle";
 
 export default function App() {
   const { tasks, addTask, moveTask } = useKanban();
@@ -16,7 +16,7 @@ export default function App() {
 
   return (
     <div className="p-10 min-h-screen bg-gray-100 dark:bg-gray-950 transition-colors duration-300">
-      {/* Header Kısmı */}
+      {/* Header*/}
       <div className="grid grid-cols-1 items-center mb-8">
         <h1 className="text-3xl text-center text-gray-800 dark:text-white font-semibold">
           Kanban Board
@@ -28,7 +28,7 @@ export default function App() {
         <CreateTaskForm onSubmit={addTask} />
       </div>
 
-      {/* Kanban Board Kısmı */}
+      {/* Kanban Board*/}
       <DndContext onDragEnd={moveTask}>
         <div className="flex gap-4 max-w-5xl mx-auto">
           {COLUMNS.map((col) => (

@@ -1,4 +1,3 @@
-// src/features/kanban/components/KanbanColumn.tsx
 import { Droppable } from "../../../components/common/Droppable";
 import { TaskCard } from "./TaskCard";
 import type { Task } from "../types/Types";

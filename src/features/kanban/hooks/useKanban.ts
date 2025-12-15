@@ -1,4 +1,3 @@
-// src/features/kanban/hooks/useKanban.ts
 import { useState } from "react";
 import type { DragEndEvent } from "@dnd-kit/core";
 import type { Task } from "../types/Types";

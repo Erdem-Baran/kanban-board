@@ -1,4 +1,3 @@
-// src/features/kanban/components/TaskCard.tsx
 import { Draggable } from "../../../components/common/Draggable";
 import type { Task } from "../types/Types";
 
